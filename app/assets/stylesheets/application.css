@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+#links_connection{
+    margin-top: 20vh;
+}
+
+#link_register{
+    margin-bottom: 8%;
+}

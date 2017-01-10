@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myrh</title>
+    <title>My new RH</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track'=> 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track'=> 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
 
   <body>
+    <nav>
+      <div class="nav-wrapper #3949ab indigo darken-1">
+        <a href="#" class="brand-logo">Feu RH</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="<%= url_for(controller:'welcome', action:'connection') %>">Candidats</a></li>
+          <li><a href="collapsible.html">Administration</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <div id="container" class="col l12 m12 s12">
     <%= yield %>
+  </div>
   </body>
+
 </html>
