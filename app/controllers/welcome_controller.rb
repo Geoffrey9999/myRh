@@ -9,7 +9,8 @@ class WelcomeController < ApplicationController
   end
 
   def create
-    render plain: params[:user].inspect
+    @new_user = User.new(user_params)
+    @new_user.save
   end
 
 end
