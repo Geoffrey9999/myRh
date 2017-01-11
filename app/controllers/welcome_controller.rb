@@ -8,4 +8,8 @@ class WelcomeController < ApplicationController
   def register
   end
 
+  def create
+    render plain: params[:user].inspect
+  end
+
 end

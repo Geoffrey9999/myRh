@@ -1,1 +1,21 @@
-<h1>PUTE</h1>
+<div class="row">
+  <div id="form" class="col l5 m5 push-l3">
+
+    <%= form_tag("/welcome/create", method: "post") do %>
+
+        <%= label_tag(:firstname, "Prénom:") %>
+        <%= text_field_tag(:firstname) %>
+
+        <%= label_tag(:lastname, "Nom de Famille:") %>
+        <%= text_field_tag(:lastname) %>
+
+        <%= label_tag(:birthdate, "Date de Naissance:") %>
+        <%= date_field_tag(:birthdate) %>
+
+        <%= label_tag(:mail, "Adresse Email:") %>
+        <%= email_field_tag(:mail) %>
+
+        <%= submit_tag("s'inscrire") %>
+    <% end %>
+  </div>
+</div>
