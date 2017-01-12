@@ -14,14 +14,36 @@
  *= require_self
  */
 
-#links_connection{
-    margin-top: 20vh;
+body {
+    padding-top: 65px;
 }
 
-#link_register{
-    margin-bottom: 8%;
+#logo{
+    font-size: 40px;
 }
 
-#form{
-    margin-top: 10vh;
+.link_size{
+    font-size: 30px;
 }
+
+
+
+
+
+
+
+/*#links_connection{*/
+    /*margin-top: 20vh;*/
+/*}*/
+
+/*#link_register{*/
+    /*margin-bottom: 8%;*/
+/*}*/
+
+/*#form{*/
+    /*margin-top: 10vh;*/
+/*}*/
+
+/*#test{*/
+    /*margin-top: 40%;*/
+/*}*/

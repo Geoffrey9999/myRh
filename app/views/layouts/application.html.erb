@@ -10,17 +10,15 @@
   </head>
 
   <body>
-    <nav>
-      <div class="nav-wrapper #3949ab indigo darken-1">
-        <a href="#" class="brand-logo">Feu RH</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="<%= url_for(controller:'welcome', action:'connection') %>">Candidats</a></li>
-          <li><a href="collapsible.html">Administration</a></li>
-        </ul>
-      </div>
-    </nav>
+  <nav class="navbar navbar-default navbar-fixed-top">
+      <a href="#" id="logo" class="pull-left">Feu RH</a>
+    <ul class="pull-right list-unstyled link_size list-inline">
+    <li><a href="<%= url_for(controller:'welcome', action:'connection') %>">Candidats</a></li>
+      <li><a href="collapsible.html">Administration</a></li>
+    </ul>
+  </nav>
 
-  <div id="container" class="col l12 m12 s12">
+  <div class="container">
     <%= yield %>
   </div>
   </body>
