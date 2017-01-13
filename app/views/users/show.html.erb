@@ -1,6 +1,8 @@
-<div class="col l12">
-  <%= notice %>
+<% if flash[:notice] %>
+<div class="alert alert-danger">
+  <%= flash[:notice] %>
 </div>
+    <% end %>
 
 <div class="row">
   <div id="form" class="col l5 m5 push-l3">
