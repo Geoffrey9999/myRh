@@ -1,8 +1,16 @@
 <% if flash[:notice] %>
-<div class="alert alert-danger">
-  <%= flash[:notice] %>
-</div>
-    <% end %>
+    <div class="alert alert-danger">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<% if @user.present? %>
+  <% if @user.errors.any? %>
+      <% @user.errors.full_messages.each do |message| %>
+          <li class="alert alert-danger"><%= message %></li>
+      <% end %>
+  <% end %>
+<% end %>
 
 <div class="row">
   <div id="form" class="col l5 m5 push-l3">

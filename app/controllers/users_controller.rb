@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   def index
     @instance = Instance.all
-    flash[:notice] = params[:error]
   end
 
   def show
@@ -17,19 +16,21 @@ class UsersController < ApplicationController
 
   def create
     @check_instance = Instance.find_by_id(params[:users].permit(:id_instance)[:id_instance])
-    @check_user = User.find_by(mail: params[:users].permit(:mail)[:mail])
 
-    if @check_user.present?
-      flash[:notice] = 'Le mail est déjà utilisé'
-      redirect_to :controller => 'users', :action => 'index', :error => flash[:notice]
-    elsif @check_instance.nil?
+    if @check_instance.nil?
       flash[:notice] = 'Bien essayé'
       redirect_to :controller => 'users', :action => 'index', :error => flash[:notice]
     else
-      @users = User.new(params.require(:users).permit(:firstname, :lastname, :birthdate , :mail, :id_instance))
-      @users.save
-      flash[:notice] = 'Inscription réussit'
-      redirect_to :controller => 'welcome', :action => 'connection'
+      @user = User.new(params.require(:users).permit(:firstname, :lastname, :birthdate , :mail, :id_instance))
+      if @user.valid?
+        @user.save
+        flash[:notice] = 'Inscription réussite'
+        redirect_to :controller => 'welcome', :action => 'connection'
+      else
+        # flash[:notice] = 'nique ta mère'
+        render 'show'
+        #redirect_to :controller => 'users', :action => 'index', :error => flash[:notice], :users => @user
+      end
     end
   end
 
