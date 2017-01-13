@@ -1,25 +1,32 @@
 class UsersController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => :create
+
   def index
     @instance = Instance.all
+    flash[:notice] = params[:error]
   end
 
   def show
-    # render plain: params[:id].inspect
-    @id_instance = params[:id]
-  end
-
-  def instance
-    @id_instance = params[:instance_id]
-    render plain: @id_instance.inspect
+    @id_instance = Instance.find_by_id(params[:id])
+    if @id_instance.present?
+      @value = params[:id]
+    else
+      flash[:notice] = 'Bien Essayé'
+      redirect_to :controller => 'users', :action => 'index', :error => flash[:notice]
+    end
   end
 
   def create
-    @users = User.new(params.require(:users).permit(:firstname, :lastname, :birthdate , :mail, :id_instance))
-    @users.save
-    flash[:notice] = 'Successfully checked in'
-    redirect_to :controller => 'welcome', :action => 'connection'
-     
+
+    @check_instance = Instance.find_by_id(params[:users].permit(:id_instance)[:id_instance])
+    if @check_instance.present?
+      @users = User.new(params.require(:users).permit(:firstname, :lastname, :birthdate , :mail, :id_instance))
+      @users.save
+      flash[:notice] = 'Successfully checked in'
+      redirect_to :controller => 'welcome', :action => 'connection'
+    else
+      flash[:notice] = 'Bien Essayé'
+      redirect_to :controller => 'users', :action => 'index', :error => flash[:notice]
+    end
     # render plain: params[:users].inspect
   end
 

@@ -1,8 +1,6 @@
-
 <div class="col l12">
   <%= notice %>
 </div>
-
 
 <div class="row">
   <div id="form" class="col l5 m5 push-l3">
@@ -21,7 +19,7 @@
         <%= f.label :mail, "Adresse Email:" %>
         <%= f.email_field :mail %>
 
-        <%= f.hidden_field :hidden, :value=>@id_instance %>
+        <%= f.hidden_field :id_instance, :value=>@value %>
 
         <%= f.submit "s'inscrire", class: "btn" %>
     <% end %>
