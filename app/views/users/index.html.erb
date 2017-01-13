@@ -1,5 +1,7 @@
 <%=label_tag 'Choisissez votre instance' %>
-<%= form_tag("/instance", method: "post") do %>
+<%= form_tag("/instance", method: "get") do %>
     <%= select_tag 'instance_id', options_for_select(@instance.collect{|u| [u.date + u.company + u.town , u.id ]}) %>
     <%= submit_tag("Valider") %>
 <% end %>
+
+

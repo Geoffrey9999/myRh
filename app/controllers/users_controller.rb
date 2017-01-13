@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def instance
     @id_instance = params[:instance_id]
+    render plain: @id_instance.inspect
   end
 
   def create
@@ -18,8 +19,8 @@ class UsersController < ApplicationController
     @users.save
     flash[:notice] = 'Successfully checked in'
     redirect_to :controller => 'welcome', :action => 'connection'
-
-    # render plain: params[:users].permit(:id_instance).inspect
+     
+    # render plain: params[:users].inspect
   end
 
 end

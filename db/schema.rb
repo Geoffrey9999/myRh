@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111130255) do
+ActiveRecord::Schema.define(version: 20170112135130) do
 
   create_table "instances", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "town"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170111130255) do
     t.string   "lastname"
     t.date     "birthdate"
     t.string   "mail"
-    t.integer  "id_instance"
+    t.string   "id_instance"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
