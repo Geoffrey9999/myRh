@@ -2,6 +2,9 @@ class WelcomeController < ApplicationController
   def index
   end
 
+  def administration
+  end
+
   def connection
   end
 
