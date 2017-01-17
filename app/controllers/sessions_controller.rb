@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     pass = Admin.find_by(password: params[:session][:password].downcase)
     if user.present? && pass.present?
       log_in user
-      redirect_to :controller => 'welcome', :action => 'connection'
+      redirect_to :controller => 'admins', :action => 'index'
     else
       flash[:notice] = 'Invalid email/password combination' # Not quite right!
       render 'new'
@@ -18,6 +18,8 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:user_id)
     @current_user = nil
+    session[:user_id] = nil
+    redirect_to :controller => 'welcome', :action => 'connection'
   end
 
 end

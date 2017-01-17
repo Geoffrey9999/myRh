@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :admins
   get 'sessions/new'
+  get 'sessions/destroy'
 
   # get '/instance', to: 'users#instance'
   get 'users/instance'
