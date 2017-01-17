@@ -1,0 +1,12 @@
+
+<%= form_for :questionnaire, url: admins_path, :html => {:id => "questionnaire"} do |f| %>
+    <p>
+      <%= f.submit "Crée un questionnaire" %>
+    </p>
+<% end %>
+
+    <button class="" id="select">Crée une question avec comme réponse un select</button><br>
+    <button class="" id="textarea">Crée une question avec comme réponse un textarea</button><br>
+    <button class="" id="radio">Crée une question avec comme réponse un radio</button><br>
+    <button class="" id="checkbox">Crée une question avec comme réponse un checkbox</button><br>
+    <button class="" id="input">Crée une question avec comme réponse un input type text</button>

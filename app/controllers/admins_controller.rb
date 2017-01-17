@@ -7,4 +7,7 @@ class AdminsController < ApplicationController
     end
   end
 
+  def new
+  end
+
 end

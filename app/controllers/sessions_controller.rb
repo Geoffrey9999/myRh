@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = Admin.find_by(mail: params[:session][:email].downcase)
+    user = Admin.find_by(login: params[:session][:login].downcase)
     pass = Admin.find_by(password: params[:session][:password].downcase)
     if user.present? && pass.present?
       log_in user

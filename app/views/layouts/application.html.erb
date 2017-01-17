@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My new RH</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>My new RH</title>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" charset="utf-8"></script>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track'=> 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track'=> 'reload' %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track'=> 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track'=> 'reload' %>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  </head>
+</head>
 
-  <body>
-  <% if session[:user_id].present? %>
-  <nav class="navbar navbar-default navbar-fixed-top">
+<body>
+<% if session[:user_id].present? %>
+    <nav class="navbar navbar-default navbar-fixed-top">
       <a href="#" id="logo" class="pull-left">Feu RH</a>
-    <ul class="pull-right list-unstyled link_size list-inline">
-    <li><a href="<%= url_for(controller:'welcome', action:'connection') %>">Candidats</a></li>
-      <li><a href="<%= url_for(controller:'sessions', action:'new') %>">Administration</a></li>
-      <li><a href="<%= url_for(controller:'sessions', action:'destroy') %>">Déconnexion</a></li>
-    </ul>
-  </nav>
-      <% else %>
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <a href="#" id="logo" class="pull-left">Feu RH</a>
-        <ul class="pull-right list-unstyled link_size list-inline">
-          <li><a href="<%= url_for(controller:'welcome', action:'connection') %>">Candidats</a></li>
-          <li><a href="<%= url_for(controller:'sessions', action:'new') %>">Administration</a></li>
+      <ul class="pull-right list-unstyled link_size list-inline">
+        <li><a href="<%= url_for(controller:'welcome', action:'connection') %>">Candidats</a></li>
+        <li><a href="<%= url_for(controller:'sessions', action:'new') %>">Administration</a></li>
+        <li><a href="<%= url_for(controller:'sessions', action:'destroy') %>">Déconnexion</a></li>
+      </ul>
+    </nav>
+<% else %>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <a href="#" id="logo" class="pull-left">Feu RH</a>
+      <ul class="pull-right list-unstyled link_size list-inline">
+        <li><a href="<%= url_for(controller:'welcome', action:'connection') %>">Candidats</a></li>
+        <li><a href="<%= url_for(controller:'sessions', action:'new') %>">Administration</a></li>
 
-        </ul>
-      </nav>
-  <% end %>
+      </ul>
+    </nav>
+<% end %>
 
-  <div class="container">
-    <%= yield %>
-  </div>
-  </body>
+<div class="container">
+  <%= yield %>
+</div>
+</body>
 
 </html>
