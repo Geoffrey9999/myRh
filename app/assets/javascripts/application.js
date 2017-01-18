@@ -5,7 +5,7 @@ $(document).ready(function()
         if (selectASK != '') {
             var selectOption = prompt('Combien options le select a besoin ? (un int)');
             if (selectOption != '' && !isNaN(selectOption)) {
-                $("#questionnaire").append("<p>"+selectASK+"<br><select name='select' id='select'></select></p>");
+                $("#questionnaire").append("<input type='button' value='" + selectASK +"' name='quest'><br><select name='select' id='select'></select></input>");
                 for (var i = 0; i < selectOption; i++) {
                     var optionSelect = prompt("Nom de l'option ?");
                     $('#select').append("<option value="+optionSelect+">"+optionSelect+"</option>");
