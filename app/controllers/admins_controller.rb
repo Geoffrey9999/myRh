@@ -21,11 +21,5 @@ class AdminsController < ApplicationController
       Question.create(questions: tmp_array)
       # redirect_to :controller => 'admins', :action => 'new', :error => flash[:notice]
     end
-
-    if params[:textarea].present?
-
-    end
-
   end
-
 end

@@ -1,0 +1,44 @@
+
+<form action="<%= url_for(controller:'instances', action:'update') %>" method="post">
+
+
+
+      <label for="date"><%= f.date %></label>
+      <input type="text" name="date" id="date" placeholder="<%= f.date %>">
+
+      <label for="company"><%= f.company %></label>
+      <input type="text" id="company" name="company" placeholder="<%= f.company %>">
+
+      <label for="town"><%= f.town %></label>
+      <input type="text" id="town" name="tow" placeholder="<%= f.town %>">
+
+      <br />
+      <br />
+      <input type="submit" value="modifier">
+
+</form>
+
+
+<%= form_for :instance, :remote => true, :url => {:controller => :instances, action: :update}  do |f| %>
+
+    <% @get_instance.each do |t| %>
+
+    <%= f.label :date,  %>
+    <%= f.text_field :firstname  %>
+
+    <%= f.label :lastname, "Nom de Famille:" %>
+    <%= f.text_field :lastname %>
+
+    <%= f.label :birthdate, "Date de Naissance:" %>
+    <%= f.date_field :birthdate %>
+
+    <%= f.label :mail, "Adresse Email:" %>
+    <%= f.email_field :mail %>
+
+    <%= f.hidden_field :id_instance, :value=>@value %>
+
+    <%= f.submit "s'inscrire", class: "btn" %>
+
+    <% end %>
+
+<% end %>

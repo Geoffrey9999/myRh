@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'instances/get_instances'
   resources :instances
+
   resources :admins
   get 'sessions/new'
   get 'sessions/destroy'
