@@ -19,12 +19,12 @@ class InstancesController < ApplicationController
     day = params[:inst].permit(:dateinstructed)['dateinstructed(3i)']
     month = params[:inst].permit(:dateinstructed)['dateinstructed(2i)']
     year = params[:inst].permit(:dateinstructed)['dateinstructed(1i)']
+
     date = day + '/' + month + '/' + year
     id_entreprise = params[:entreprise]
     company_name = Companie.where(id: id_entreprise)
     name = company_name[0][:company_name]
-    new = Instance.new(company: name, date: date , id_instance: id_entreprise)
-    new.save
+   Instance.create(company: name, date: date)
     render 'index'
   end
 

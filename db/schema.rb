@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170119171554) do
+ActiveRecord::Schema.define(version: 20170119173331) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "login"
@@ -28,12 +28,11 @@ ActiveRecord::Schema.define(version: 20170119171554) do
     t.string "company_location"
   end
 
-  create_table "instances", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "company"
-    t.integer  "id_instance", null: false
-    t.string   "date"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "instances", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string  "company"
+    t.string  "date"
+    t.integer "companies_id"
+    t.index ["companies_id"], name: "index_instances_on_companies_id", using: :btree
   end
 
   create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -50,4 +49,5 @@ ActiveRecord::Schema.define(version: 20170119171554) do
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "instances", "companies", column: "companies_id"
 end

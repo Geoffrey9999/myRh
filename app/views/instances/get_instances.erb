@@ -1,4 +1,4 @@
 <% @instances.each do |instance| %>
-    <a href="<%= url_for(controller:'instances', action:'edit', id: instance.id) %>"><%= instance.date + "  " + instance.company %></a>
+    <a href="<%= url_for(controller:'instances', action:'edit', id: instance.id) %>"><%= instance.date + "  " + instance.company + " " + instance.companie.company_location %></a>
     <br />
 <% end %>
