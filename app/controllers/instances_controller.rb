@@ -19,17 +19,16 @@ class InstancesController < ApplicationController
     day = params[:inst].permit(:dateinstructed)['dateinstructed(3i)']
     month = params[:inst].permit(:dateinstructed)['dateinstructed(2i)']
     year = params[:inst].permit(:dateinstructed)['dateinstructed(1i)']
-
     date = day + '/' + month + '/' + year
-    id_entreprise = params[:entreprise]
-    company_name = Companie.where(id: id_entreprise)
-    name = company_name[0][:company_name]
-   Instance.create(company: name, date: date)
+    id = params[:entreprise]
+    create = Instance.new(companie_id: id, date: date, )
+    create.save
     render 'index'
   end
 
   def get_instances
     @instances = Instance.all
+
   end
 
   def edit
@@ -44,7 +43,7 @@ class InstancesController < ApplicationController
     update = Instance.where(id: params[:id])
     update.update(date: set_date, company: set_company)
     flash[:notice] = "Instance bien modifié, merci"
-      render 'index'
+    render 'index'
   end
 
 end

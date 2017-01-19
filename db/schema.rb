@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20170119173331) do
   end
 
   create_table "instances", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "company"
     t.string  "date"
     t.integer "companies_id"
     t.index ["companies_id"], name: "index_instances_on_companies_id", using: :btree

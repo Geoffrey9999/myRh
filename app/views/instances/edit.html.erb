@@ -9,7 +9,7 @@
       <label for="date"><%= f.date %></label>
       <input type="date" name="date" id="date" placeholder="<%= f.date %>">
 
-      <label for="company"><%= f.company %></label>
+      <label for="company"><%= f.companie.company_name %></label>
       <select id="company"  name="company">
         <option disabled selected>Choisiez une entreprise</option>
         <% @company.each do |x| %>

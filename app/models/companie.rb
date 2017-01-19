@@ -1,3 +1,3 @@
 class Companie < ApplicationRecord
-  has_many :instance
+  # has_many :instance
 end
