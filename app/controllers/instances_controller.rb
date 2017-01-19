@@ -16,15 +16,17 @@ class InstancesController < ApplicationController
   end
 
   def create
-    set_year = params[:inst].permit(:model_year)[:model_year]
-    set_month = params[:inst].permit(:model_mounth)[:model_mounth]
-    set_date = set_year + " " + set_month
+    day = params[:inst].permit(:dateinstructed)['dateinstructed(3i)']
+    month = params[:inst].permit(:dateinstructed)['dateinstructed(2i)']
+    year = params[:inst].permit(:dateinstructed)['dateinstructed(1i)']
+    date = day + '/' + month + '/' + year
     id_entreprise = params[:entreprise]
     set_town = params[:inst].permit(:ville)[:ville]
     company_name = Companie.where(id: id_entreprise)
     name = company_name[0][:company_name]
-    Instance.create(town: set_town, company: name, date: set_date , id_instance: id_entreprise)
-    redirect_to :controller => 'instances', :action => 'index'
+    new = Instance.new(town: set_town, company: name, date: date , id_instance: id_entreprise)
+    new.save
+    render 'index'
   end
 
   def get_instances

@@ -3,14 +3,9 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:inst, url: instances_path) do |f| %>
 
-        <%= f.label :"Année de l'instance :" %>
-        <%= f.select :model_year, (Time.zone.now.year)..(Time.zone.now.year + 20) %>
 
-        <br />
-        <br />
-
-        <%= f.label :"Mois de l'instance :" %>
-        <%= f.select :model_mounth, options_for_select([ "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre" ]) %>
+        <%= f.label :"Date :" %>
+        <%= f.date_select :dateinstructed, :order => [:day, :month, :year] %>
 
         <br />
         <br />
