@@ -21,10 +21,9 @@ class InstancesController < ApplicationController
     year = params[:inst].permit(:dateinstructed)['dateinstructed(1i)']
     date = day + '/' + month + '/' + year
     id_entreprise = params[:entreprise]
-    set_town = params[:inst].permit(:ville)[:ville]
     company_name = Companie.where(id: id_entreprise)
     name = company_name[0][:company_name]
-    new = Instance.new(town: set_town, company: name, date: date , id_instance: id_entreprise)
+    new = Instance.new(company: name, date: date , id_instance: id_entreprise)
     new.save
     render 'index'
   end
@@ -41,12 +40,11 @@ class InstancesController < ApplicationController
 
   def update
     set_date = params[:date]
-    set_town = params[:town]
     set_company = params[:company]
     update = Instance.where(id: params[:id])
-    update.update(date: set_date, town: set_town, company: set_company)
+    update.update(date: set_date, company: set_company)
     flash[:notice] = "Instance bien modifié, merci"
-    redirect_to :controller => 'instances', :action => 'index', :error => flash[:notice]
+      render 'index'
   end
 
 end

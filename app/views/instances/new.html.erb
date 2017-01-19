@@ -11,18 +11,12 @@
         <br />
 
         <%= f.label :entreprise %>
-        <%= select_tag 'entreprise', options_for_select(@company.collect{|u| [u.company_name, u.id ]}) %>
+        <%= select_tag 'entreprise', options_for_select(@company.collect{|u| [u.company_name + "  -  " + u.company_location, u.id ]}) %>
 
         <br />
         <br />
 
 
-        <%= f.label :ville %>
-        <%= f.text_field :ville, class: 'form-control' %>
-
-
-        <br />
-        <br />
 
         <%= f.submit "Créer l'instance", class: "btn btn-success" %>
     <% end %>

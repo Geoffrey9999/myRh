@@ -14,12 +14,9 @@
         <option disabled selected>Choisiez une entreprise</option>
         <% @company.each do |x| %>
 
-            <option value="<%= x.company_name %>"><%= x.company_name %></option>
+            <option value="<%= x.company_name %>"><%= x.company_name + "  -  " + x.company_location %></option>
         <% end %>
       </select>
-
-      <label for="town"><%= f.town %></label>
-      <input type="text" id="town" name="town" placeholder="<%= f.town %>">
 
       <br />
       <br />
