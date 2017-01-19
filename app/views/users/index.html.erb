@@ -8,7 +8,7 @@
   <% @instance.each do |instances| %>
       <div class="btn btn-success">
         <a href="<%= url_for(controller:'users', action:'show', id:instances.id) %>">
-          <%= instances.date + instances.company + instances.town %>
+          <%= instances.date + instances.company + ' ' +  instances.town %>
         </a>
       </div>
   <% end %>

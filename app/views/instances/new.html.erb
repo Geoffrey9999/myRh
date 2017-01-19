@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:inst, url: instances_path) do |f| %>
@@ -8,14 +9,23 @@
         <br />
         <br />
 
-          <%= f.label :"Mois de l'instance :" %>
-          <%= f.select :model_mounth, options_for_select([ "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre" ]) %>
+        <%= f.label :"Mois de l'instance :" %>
+        <%= f.select :model_mounth, options_for_select([ "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre" ]) %>
+
+        <br />
+        <br />
 
         <%= f.label :entreprise %>
-        <%= f.text_field :entreprise, class: 'form-control' %>
+        <%= select_tag 'entreprise', options_for_select(@company.collect{|u| [u.company_name, u.id ]}) %>
+
+        <br />
+        <br />
+
 
         <%= f.label :ville %>
         <%= f.text_field :ville, class: 'form-control' %>
+
+
         <br />
         <br />
 
