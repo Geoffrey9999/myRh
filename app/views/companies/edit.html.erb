@@ -1,0 +1,23 @@
+<form class="form-horizontal" action="/companies/<%= @id.id %>" accept-charset="UTF-8" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input name="utf8" value="✓" type="hidden">
+  <input name="_method" value="patch" type="hidden">
+
+  <% @find.each do |f| %>
+
+      <label for="name"><%= f.company_name %></label>
+      <input type="text" id="name" name="name" placeholder="<%= f.company_name %>">
+
+      <br />
+      <br />
+
+      <label for="town"><%= f.company_location %></label>
+      <input type="text" id="town" name="town" placeholder="<%= f.company_location %>">
+
+      <br />
+      <br />
+      <input type="submit" value="modifier">
+  <% end %>
+</form>
+
+

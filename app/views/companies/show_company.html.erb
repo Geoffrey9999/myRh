@@ -1,0 +1,5 @@
+<% @companys.each do |f| %>
+    <a href="<%= url_for(controller:'companies', action:'edit', id: f.id) %>"><%= f.company_name + " - " + f.company_location %></a>
+    <br />
+    <br />
+<% end %>

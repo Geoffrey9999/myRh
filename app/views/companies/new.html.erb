@@ -1,0 +1,12 @@
+<%= form_for :companie, url: {controller:'companies'} do |f| %>
+
+    <%= f.label :company, "Merci d'indiquer le nom de l'entreprise" %>
+    <%= f.text_field :company  %>
+
+    <%= f.label :town, "Merci d'y indiquer la ville" %>
+    <%= f.text_field :town %>
+
+    <br />
+    <br />
+    <%= f.submit "Enregistrer", class: "btn" %>
+<% end %>

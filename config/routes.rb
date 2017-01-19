@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'companies/show_company'
+  resources :companies
+
   get 'instances/get_instances'
   resources :instances
 
