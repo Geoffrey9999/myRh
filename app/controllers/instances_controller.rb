@@ -16,13 +16,14 @@ class InstancesController < ApplicationController
   end
 
   def create
-    year = params[:inst].permit(:model_year)[:model_year]
-    month = params[:inst].permit(:model_mounth)[:model_mounth]
-    date = year + " " + month
+    set_year = params[:inst].permit(:model_year)[:model_year]
+    set_month = params[:inst].permit(:model_mounth)[:model_mounth]
+    set_date = set_year + " " + set_month
     id_entreprise = params[:entreprise]
-    town = params[:inst].permit(:ville)[:ville]
+    set_town = params[:inst].permit(:ville)[:ville]
     company_name = Companie.where(id: id_entreprise)
-    Instance.create(town: town, company: company_name[0][:company_name], date: date , id_instance: id_entreprise)
+    name = company_name[0][:company_name]
+    Instance.create(town: set_town, company: name, date: set_date , id_instance: id_entreprise)
     redirect_to :controller => 'instances', :action => 'index'
   end
 
@@ -31,14 +32,19 @@ class InstancesController < ApplicationController
   end
 
   def edit
+    @company = Companie.all
     @get_instance = Instance.where(id: params[:id])
+    @id = @get_instance[0]
   end
 
   def update
-    @id = params[:id]
-    # @params = params[:instance].permit(:date)
-    render plain: @id
-
+    set_date = params[:date]
+    set_town = params[:town]
+    set_company = params[:company]
+    update = Instance.where(id: params[:id])
+    update.update(date: set_date, town: set_town, company: set_company)
+    flash[:notice] = "Instance bien modifié, merci"
+    redirect_to :controller => 'instances', :action => 'index', :error => flash[:notice]
   end
 
 end

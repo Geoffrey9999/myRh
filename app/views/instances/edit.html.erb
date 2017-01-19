@@ -1,44 +1,30 @@
 
-<form action="<%= url_for(controller:'instances', action:'update') %>" method="post">
+<form class="form-horizontal" action="/instances/<%= @id.id %>" accept-charset="UTF-8" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input name="utf8" value="✓" type="hidden">
+  <input name="_method" value="patch" type="hidden">
 
-
+  <% @get_instance.each do |f| %>
 
       <label for="date"><%= f.date %></label>
-      <input type="text" name="date" id="date" placeholder="<%= f.date %>">
+      <input type="date" name="date" id="date" placeholder="<%= f.date %>">
 
       <label for="company"><%= f.company %></label>
-      <input type="text" id="company" name="company" placeholder="<%= f.company %>">
+      <select id="company"  name="company">
+        <option disabled selected>Choisiez une entreprise</option>
+        <% @company.each do |x| %>
+
+            <option value="<%= x.company_name %>"><%= x.company_name %></option>
+        <% end %>
+      </select>
 
       <label for="town"><%= f.town %></label>
-      <input type="text" id="town" name="tow" placeholder="<%= f.town %>">
+      <input type="text" id="town" name="town" placeholder="<%= f.town %>">
 
       <br />
       <br />
       <input type="submit" value="modifier">
-
+  <% end %>
 </form>
 
 
-<%= form_for :instance, :remote => true, :url => {:controller => :instances, action: :update}  do |f| %>
-
-    <% @get_instance.each do |t| %>
-
-    <%= f.label :date,  %>
-    <%= f.text_field :firstname  %>
-
-    <%= f.label :lastname, "Nom de Famille:" %>
-    <%= f.text_field :lastname %>
-
-    <%= f.label :birthdate, "Date de Naissance:" %>
-    <%= f.date_field :birthdate %>
-
-    <%= f.label :mail, "Adresse Email:" %>
-    <%= f.email_field :mail %>
-
-    <%= f.hidden_field :id_instance, :value=>@value %>
-
-    <%= f.submit "s'inscrire", class: "btn" %>
-
-    <% end %>
-
-<% end %>

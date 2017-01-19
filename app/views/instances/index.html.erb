@@ -1,3 +1,10 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+
+
 <div>
   <a href="<%= url_for(controller:'instances', action:'new') %>">Crée une nouvelle instance</a>
   <br />
