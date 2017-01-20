@@ -1,4 +1,4 @@
-class IsAdmin < ActiveRecord::Migration[5.0]
+class CreateAdmins < ActiveRecord::Migration[5.0]
   def change
     create_table :admins, :options => 'COLLATE=utf8_general_ci' do |t|
       t.string :login
