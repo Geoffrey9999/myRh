@@ -1,0 +1,4 @@
+<% @instance.each do |f| %>
+    <a href="<%= url_for(controller:'instances', action:'show', id:f.id) %>"><%= f.date + " - " +f.companie.company_name + '    -  ' +  f.companie.company_location %></a>
+    <br />
+<% end %>

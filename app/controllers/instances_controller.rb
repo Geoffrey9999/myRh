@@ -41,8 +41,23 @@ class InstancesController < ApplicationController
     set_date = params[:date]
     set_company = params[:company]
     update = Instance.where(id: params[:id])
-    update.update(date: set_date, company: set_company)
+    update.update(date: set_date, companie_id: set_company)
     flash[:notice] = "Instance bien modifié, merci"
+    render 'index'
+  end
+
+  def display
+    @instance = Instance.all
+  end
+
+  def show
+    @id = Instance.where(id:params[:id])
+    # render plain: @id[0]['id'].inspect
+  end
+
+  def destroy
+    Instance.destroy(params[:id])
+    flash[:notice] = "Instance Supprimer"
     render 'index'
   end
 

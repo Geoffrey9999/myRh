@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :companies
 
   get 'instances/get_instances'
+  get 'instances/display'
   resources :instances
 
   resources :admins
