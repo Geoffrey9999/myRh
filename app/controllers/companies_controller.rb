@@ -41,5 +41,19 @@ class CompaniesController < ApplicationController
     render 'index'
   end
 
+  def display
+    @company = Companie.all
+  end
+
+  def show
+    @id = Companie.where(id:params[:id])
+  end
+
+  def destroy
+    Companie.destroy(params[:id])
+    flash[:notice] = "Entreprise Supprimer"
+    render 'index'
+  end
+
 
 end

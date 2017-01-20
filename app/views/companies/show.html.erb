@@ -1,0 +1,14 @@
+<form class="form-horizontal" action="/companies/<%= @id[0]['id'] %>" accept-charset="UTF-8" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input name="utf8" value="✓" type="hidden">
+  <input name="_method" value="delete" type="hidden">
+
+
+  <% @id.each do |f| %>
+      <h1><%= f.company_name + '  ' + f.company_location %></h1>
+  <% end %>
+
+
+  <input type="submit" value="Supprimer" />
+
+</form>
