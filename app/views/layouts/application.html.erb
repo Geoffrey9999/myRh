@@ -22,13 +22,13 @@
         <li><a href="<%= url_for(controller:'sessions', action:'destroy') %>">Déconnexion</a></li>
       </ul>
     </nav>
+
 <% else %>
     <nav class="navbar navbar-default navbar-fixed-top">
       <a href="#" id="logo" class="pull-left">Feu RH</a>
       <ul class="pull-right list-unstyled link_size list-inline">
         <li><a href="<%= url_for(controller:'welcome', action:'connection') %>">Candidats</a></li>
         <li><a href="<%= url_for(controller:'sessions', action:'new') %>">Administration</a></li>
-
       </ul>
     </nav>
 <% end %>

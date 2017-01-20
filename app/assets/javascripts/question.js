@@ -21,12 +21,16 @@ $(document).ready(function() {
             return data;
         }
         else {
-            data.name.push(name);
+            alert(data);
             return radio_prompt(data, false);
         }
     };
+
+    // $('#id_survey_name').val(data.name);
+
     var add_to_input = function() {
         $('#survey_html').val($('#question').html());
+        $('#survey_name').val(data.name);
     };
     var add_to_html = function() {
         $('#question').html($('#survey_html').val());
@@ -108,6 +112,6 @@ $(document).ready(function() {
             default:
                 return;
                 break;
-        };
+        }
     });
 });

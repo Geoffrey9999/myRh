@@ -22,9 +22,19 @@
 
 
         <div class="form-group">
+          <label class="col-sm-2 control-label" for="instance_month">Instances</label>
+          <div class="col-sm-4">
+            <select name="instance" id="choice" class="form-control">
+              <% @instance.each do |f| %>
+                  <option value="<%= f.companie.id %>"><%= f.date + ' -- ' +  f.companie.company_name + ' -- ' + f.companie.company_location%></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+        <br><br>
+        <div class="form-group">
           <label class="col-sm-2 control-label" for="instance_month">Type de question</label>
           <div class="col-sm-4">
-
             <select name="choice" id="choice" class="form-control">
               <option value="1" >input</option>
               <option value="2" >textarea</option>
@@ -33,6 +43,7 @@
               <option value="5" >select</option>
             </select>
           </div>
+
 
           <div class="col-sm-4">
 

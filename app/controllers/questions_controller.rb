@@ -15,6 +15,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+    @instance = Instance.all
   end
 
   # GET /questions/1/edit
@@ -26,7 +27,8 @@ class QuestionsController < ApplicationController
   def create
     value = params[:questions].permit(:template)['template']
     set_name = params[:name]
-    @question = Question.new(template: value, name: set_name)
+    set_instance = params[:instance]
+    @question = Question.new(template: value, name: set_name, instance_id: set_instance)
 
     respond_to do |format|
       if @question.save
