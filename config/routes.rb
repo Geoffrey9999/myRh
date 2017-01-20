@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :questions
   get 'companies/show_company'
   get 'companies/display'
   resources :companies

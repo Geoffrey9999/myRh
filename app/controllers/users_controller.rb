@@ -36,5 +36,3 @@ class UsersController < ApplicationController
   end
 
 end
-
-# render plain: params[:users].inspect
