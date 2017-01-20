@@ -24,7 +24,9 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
+    value = params[:questions].permit(:template)['template']
+    set_name = params[:name]
+    @question = Question.new(template: value, name: set_name)
 
     respond_to do |format|
       if @question.save
@@ -62,13 +64,13 @@ class QuestionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_question
-      @question = Question.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_question
+    @question = Question.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def question_params
-      params.fetch(:question, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def question_params
+    params.fetch(:question, {})
+  end
 end

@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Questions</h1>
 
 <table>
   <thead>
@@ -12,6 +11,7 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
+        <td><strong><%= question.name %> => </strong></td>
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
         <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Question', new_question_path %>
+<%= link_to 'Crées un nouveau Questionnaire', new_question_path, class: "btn btn-success" %>

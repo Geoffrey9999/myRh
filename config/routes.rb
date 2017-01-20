@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'questions/ask/:id'
   resources :questions
+
   get 'companies/show_company'
   get 'companies/display'
   resources :companies
