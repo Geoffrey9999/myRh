@@ -1,4 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<form class="form-horizontal" action="/questions/<%= @id %>" accept-charset="UTF-8" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input name="utf8" value="✓" type="hidden">
+  <input name="_method" value="delete" type="hidden">
+
+  <input type="submit" class="btn btn-danger" value="Supprimer">
+
+</form>
+
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>

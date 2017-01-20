@@ -21,12 +21,9 @@ $(document).ready(function() {
             return data;
         }
         else {
-            alert(data);
             return radio_prompt(data, false);
         }
     };
-
-    // $('#id_survey_name').val(data.name);
 
     var add_to_input = function() {
         $('#survey_html').val($('#question').html());
@@ -34,6 +31,7 @@ $(document).ready(function() {
     };
     var add_to_html = function() {
         $('#question').html($('#survey_html').val());
+
     };
     add_to_html();
 

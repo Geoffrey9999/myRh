@@ -25,8 +25,8 @@
           <label class="col-sm-2 control-label" for="instance_month">Instances</label>
           <div class="col-sm-4">
             <select name="instance" id="choice" class="form-control">
-              <% @instance.each do |f| %>
-                  <option value="<%= f.companie.id %>"><%= f.date + ' -- ' +  f.companie.company_name + ' -- ' + f.companie.company_location%></option>
+              <% @instance.each do |t| %>
+                  <option value="<%= t.id %>"><%= t.date + ' -- ' +  t.companie.company_name + ' -- ' + t.companie.company_location %></option>
               <% end %>
             </select>
           </div>

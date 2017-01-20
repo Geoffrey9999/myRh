@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    @id = params[:id]
   end
 
   # GET /questions/new
@@ -20,11 +21,13 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    @instance = Instance.all
   end
 
   # POST /questions
   # POST /questions.json
   def create
+    @instance = Instance.all
     value = params[:questions].permit(:template)['template']
     set_name = params[:name]
     set_instance = params[:instance]
@@ -44,8 +47,11 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
+    value = params[:questions].permit(:template)['template']
+    set_name = params[:name]
+    set_instance = params[:instance]
     respond_to do |format|
-      if @question.update(question_params)
+      if @question.update(template: value, name: set_name, instance_id: set_instance)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.json { render :show, status: :ok, location: @question }
       else
@@ -58,7 +64,7 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
-    @question.destroy
+    Question.destroy(params[:id])
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
