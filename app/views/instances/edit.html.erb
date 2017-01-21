@@ -6,10 +6,10 @@
   <% @get_instance.each do |f| %>
 
       <label for="date"><%= f.date %></label>
-      <input type="date" name="date" id="date" placeholder="<%= f.date %>">
+      <input type="date" name="date" id="date" placeholder="<%= f.date %>", required>
 
       <label for="company"><%= f.companie.company_name %></label>
-      <select id="company"  name="company">
+      <select id="company"  name="company" required>
         <option disabled selected>Choisiez une entreprise</option>
         <% @company.each do |x| %>
 

@@ -18,16 +18,16 @@
     <%= form_for :users, url: users_path  do |f| %>
 
         <%= f.label :firstname, "Prénom:" %>
-        <%= f.text_field :firstname  %>
+        <%= f.text_field :firstname, :required => true  %>
 
         <%= f.label :lastname, "Nom de Famille:" %>
-        <%= f.text_field :lastname %>
+        <%= f.text_field :lastname, :required => true %>
 
         <%= f.label :birthdate, "Date de Naissance:" %>
-        <%= f.date_field :birthdate %>
+        <%= f.date_field :birthdate, :required => true %>
 
         <%= f.label :mail, "Adresse Email:" %>
-        <%= f.email_field :mail %>
+        <%= f.email_field :mail, :required => true %>
 
         <%= f.hidden_field :id_instance, :value=>@value %>
 

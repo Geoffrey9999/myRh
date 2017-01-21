@@ -16,16 +16,16 @@
       <div id="form" class="col l5 m5 push-l3">
 
         <%= f.label :login, "Login" %>
-        <%= f.text_field :login  %>
+        <%= f.text_field :login , :required => true %>
 
         <%= f.label :mail, "Adresse Email:" %>
-        <%= f.email_field :mail %>
+        <%= f.email_field :mail, :required => true %>
 
         <%= f.label :firstname, "firstname" %>
-        <%= f.text_field :firstname  %>
+        <%= f.text_field :firstname, :required => true  %>
 
         <%= f.label :lastname, "lastname" %>
-        <%= f.text_field :lastname%>
+        <%= f.text_field :lastname, :required => true %>
 
       </div>
     </div>

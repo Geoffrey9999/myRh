@@ -5,13 +5,13 @@
 
 
         <%= f.label :"Date :" %>
-        <%= f.date_select :dateinstructed, :order => [:day, :month, :year] %>
+        <%= f.date_select :dateinstructed, :order => [:day, :month, :year], :required => true %>
 
         <br />
         <br />
 
         <%= f.label :entreprise %>
-        <%= select_tag 'entreprise', options_for_select(@company.collect{|u| [u.company_name + "  -  " + u.company_location, u.id ]}) %>
+        <%= select_tag 'entreprise', options_for_select(@company.collect{|u| [u.company_name + "  -  " + u.company_location, u.id ]}), :required => true %>
 
         <br />
         <br />

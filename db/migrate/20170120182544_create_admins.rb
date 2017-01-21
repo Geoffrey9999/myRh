@@ -7,6 +7,7 @@ class CreateAdmins < ActiveRecord::Migration[5.0]
       t.string :password, :null => true
       t.string :mail
       t.string :password_digest
+      t.integer :is_admin, :default => 1
 
       t.timestamps
     end

@@ -6,13 +6,13 @@
   <% @find.each do |f| %>
 
       <label for="name"><%= f.company_name %></label>
-      <input type="text" id="name" name="name" placeholder="<%= f.company_name %>">
+      <input type="text" id="name" name="name" placeholder="<%= f.company_name %> required">
 
       <br />
       <br />
 
       <label for="town"><%= f.company_location %></label>
-      <input type="text" id="town" name="town" placeholder="<%= f.company_location %>">
+      <input type="text" id="town" name="town" placeholder="<%= f.company_location %>" required>
 
       <br />
       <br />

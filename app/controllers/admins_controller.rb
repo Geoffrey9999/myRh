@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
+  before_action :session_admin
 
   # GET /admins
   # GET /admins.json
@@ -85,5 +86,14 @@ class AdminsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def admin_params
     params.fetch(:admin, {})
+  end
+
+  def session_admin
+    @session = session[:user_id]
+    is_admin = Admin.where(id: @session)
+    if is_admin[0]['is_admin'] != 1
+      flash[:notice] = "héhéhé"
+      redirect_to :controller => 'welcome', :action => 'index', :error => flash[:notice]
+    end
   end
 end
