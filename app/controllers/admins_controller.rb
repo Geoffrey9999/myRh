@@ -10,6 +10,8 @@ class AdminsController < ApplicationController
   # GET /admins/1
   # GET /admins/1.json
   def show
+    @admin = Admin.where(id: params[:id])
+    @id = params[:id]
   end
 
   # GET /admins/new
@@ -25,7 +27,7 @@ class AdminsController < ApplicationController
   # POST /admins.json
   def create
     @password = SecureRandom.hex(5)
-    
+
     @login = params[:admin].permit(:login)[:login]
     @mail = params[:admin].permit(:mail)[:mail]
     @firstname = params[:admin].permit(:firstname)[:firstname]
@@ -48,8 +50,13 @@ class AdminsController < ApplicationController
   # PATCH/PUT /admins/1
   # PATCH/PUT /admins/1.json
   def update
+    @login = params[:admin].permit(:login)[:login]
+    @mail = params[:admin].permit(:mail)[:mail]
+    @firstname = params[:admin].permit(:firstname)[:firstname]
+    @lastname = params[:admin].permit(:lastname)[:lastname]
+
     respond_to do |format|
-      if @admin.update(admin_params)
+      if @admin.update(login: @login, mail: @mail, firstname: @firstname, lastname: @lastname)
         format.html { redirect_to @admin, notice: 'Admin was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin }
       else
@@ -62,7 +69,7 @@ class AdminsController < ApplicationController
   # DELETE /admins/1
   # DELETE /admins/1.json
   def destroy
-    @admin.destroy
+    Admin.destroy(params[:id])
     respond_to do |format|
       format.html { redirect_to admins_url, notice: 'Admin was successfully destroyed.' }
       format.json { head :no_content }

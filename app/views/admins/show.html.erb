@@ -1,4 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+<% @admin.each do |f| %>
+    <h1><%= f.login %></h1>
+    <h1><%= f.mail %></h1>
+    <h1><%= f.lastname %></h1>
+    <h1><%= f.firstname %></h1>
+    <% end %>
+
+<form class="form-horizontal" action="/admins/<%= @id %>" accept-charset="UTF-8" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input name="utf8" value="✓" type="hidden">
+  <input name="_method" value="delete" type="hidden">
+
+  <input type="submit" class="btn btn-danger" value="Supprimer">
+
+</form>
+
 <%= link_to 'Edit', edit_admin_path(@admin) %> |
 <%= link_to 'Back', admins_path %>
