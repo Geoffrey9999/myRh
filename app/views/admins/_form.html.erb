@@ -1,17 +1,37 @@
 <%= form_for(admin) do |f| %>
-  <% if admin.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
+    <% if admin.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
 
-      <ul>
-      <% admin.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% admin.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    <div class="row">
+      <div id="form" class="col l5 m5 push-l3">
+
+        <%= f.label :login, "Login" %>
+        <%= f.text_field :login  %>
+
+        <%= f.label :mail, "Adresse Email:" %>
+        <%= f.email_field :mail %>
+
+        <%= f.label :firstname, "firstname" %>
+        <%= f.text_field :firstname  %>
+
+        <%= f.label :lastname, "lastname" %>
+        <%= f.text_field :lastname%>
+
+      </div>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
+

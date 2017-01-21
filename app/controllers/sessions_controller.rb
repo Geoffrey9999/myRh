@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     pass = Admin.find_by(password: params[:session][:password].downcase)
     if user.present? && pass.present?
       log_in user
-      redirect_to :controller => 'admins', :action => 'new'
+      redirect_to :controller => 'admins', :action => 'index'
     else
       flash[:notice] = 'Invalid email/password combination' # Not quite right!
       render 'new'

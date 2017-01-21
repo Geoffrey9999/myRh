@@ -24,7 +24,15 @@ class AdminsController < ApplicationController
   # POST /admins
   # POST /admins.json
   def create
-    @admin = Admin.new(admin_params)
+    @password = SecureRandom.hex(5)
+    
+    @login = params[:admin].permit(:login)[:login]
+    @mail = params[:admin].permit(:mail)[:mail]
+    @firstname = params[:admin].permit(:firstname)[:firstname]
+    @lastname = params[:admin].permit(:lastname)[:lastname]
+
+    @admin = Admin.new(login: @login, mail: @mail, firstname: @firstname, lastname: @lastname, password: @password)
+    UserMailer.admin_mailer(@mail, @password, @firstname ).deliver_now
 
     respond_to do |format|
       if @admin.save
@@ -62,13 +70,13 @@ class AdminsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin
-      @admin = Admin.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_admin
+    @admin = Admin.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_params
-      params.fetch(:admin, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def admin_params
+    params.fetch(:admin, {})
+  end
 end
