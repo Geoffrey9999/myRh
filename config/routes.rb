@@ -27,6 +27,6 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   resources :users
 
-
+  match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
   root 'welcome#index'
 end
