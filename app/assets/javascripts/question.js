@@ -27,7 +27,6 @@ $(document).ready(function() {
 
     var add_to_input = function() {
         $('#survey_html').val($('#question').html());
-        $('#survey_name').val(data.name);
     };
     var add_to_html = function() {
         $('#question').html($('#survey_html').val());
